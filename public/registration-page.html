@@ -4,8 +4,96 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Register</title>
+        <link rel="icon" type="img/png" href="/resources/images/logo.png"/>
+        <link rel="stylesheet" href="/styles/style-register.css"/>
     </head>
     <body>
-        <h1>Registration Page</h1>
+            <div class="grid-container">
+                <div class="grid-item1">
+                    <h2>Register</h2>
+                    <form id="reg-form" action="/register" method="POST" onsubmit="return validate()">
+
+                        <label for="username">Username</label><br/>
+                        <input type="text" id="username" name="username" form="reg-form" placeholder="Username" required/>
+                        <br/><br/>
+            
+                        <label for="email">Email</label><br/>
+                        <input type="text" id="email" name="email" form="reg-form" placeholder="Email" required/>
+                        <br/><br/>
+                
+                        <label for="plan">Plan</label><br/>
+                        <select id="plan" name="plan">
+                            <option value="free">Free Plan</option>
+                            <option value="premium" disabled>Premium Plan</option>
+                        </select>
+                        <!--
+                        <input type="text" id="plan" name="plan" form="reg-form" placeholder="Plan" required/>
+                        -->
+                        <br/><br/>
+
+                        <label for="password">Password</label><br/>
+                        <input type="password" id="password" name="password" form="reg-form" placeholder="Password" onkeyup='check();' required/>
+                        <p id="validate-check"></p> 
+                        <br/><br/>
+                
+                        <label for="confirm-password">Confirm Password</label><br/>
+                        <input type="password" id="confirm-password" name="confirm-password" form="reg-form" placeholder="Re-enter Password" onkeyup='check();' required/>
+                        <p id="confirm-check"></p>
+                        <!--<label>&#x274C;</label><label>&#x2705;</label>-->
+                        <br/><br/>
+
+                        <input id="reg-btn" type="submit" form="reg-form" value="Register" />
+                        <input id="reset-btn" type="reset" form="reg-form" value="Reset" onclick="reset_changes()"/>
+                    </form>
+                </div>
+                <div class="grid-item2">
+                    <h3>Terms and Conditions</h3>
+                    <p>
+                        The contents of the learning path are modified for your personlized development.
+                        Professionalism has to be maintained when conversing with, but not limited to, 
+                        the experts, native speakers and other platform users.
+                        Any type of harm, both verbal and social, towards, but not limited to, the platform, 
+                        its users and stakeholders will be handled appropriately.
+                        You have to agree to our terms and conditions before using the platform.
+                    </p><br />
+                    <input type="checkbox" id="tc" name="tc" form="reg-form" required/>
+                    <label for="tc">I agree to the terms and conditions for using the platform and will adhere to it during my journey with the platform and with the connections I have made through the platform.</label>
+                    <br /><br />
+                    <button><a href="/home.html">Back to Homepage</a></button>
+                </div>
+                <div class="grid-item3">
+                    <img src="/resources/images/country-flags.jpg" alt="Country Flags"/>
+                </div>
+             </div>
+        <script>
+            var check = function() {
+                if(document.getElementById('password').value == document.getElementById('confirm-password').value)
+                {
+                    document.getElementById('confirm-check').innerHTML = "&#x2705;";
+                }
+                else
+                {
+                    document.getElementById('confirm-check').innerHTML = "&#x274C;";
+                }
+            }
+            var validate = function() 
+            {
+                if(document.getElementById('password').value == "" || document.getElementById('password').value === document.getElementById('confirm-password').value) 
+                {
+                    return true;
+                }
+                else 
+                {
+                    document.getElementById('validate-check').innerHTML = "Re-enetered password wrong.";
+                    document.getElementById('confirm-password').value = "";
+                    return false;
+                }
+            }
+            var reset_changes = function()
+            {
+                document.getElementById('confirm-check').innerHTML = "";
+                document.getElementById('validate-check').innerHTML = "";
+            }
+        </script>
     </body>
 </html>

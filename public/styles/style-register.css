@@ -1,0 +1,108 @@
+body {
+    padding: 0px 40px;
+    font-size: 1.5rem;
+    background-color: black;
+}
+
+input {
+    padding:10px;
+    border-radius: 12px;
+    border: 0.5px solid blue;
+}
+
+select {
+    padding:10px;
+    border: 0.5px solid blue
+}
+
+#reg-btn {
+    background-color: green;
+    color: white;
+    border: 0px;
+    padding:10px;
+    font-weight: bold;
+    font-size: 1rem
+}
+
+#reg-btn:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px 8px rgba(5, 252, 5, 0.582);
+}
+
+#confirm-check {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+}
+
+#validate-check {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    font-style: italic;
+    font-size: 1rem;
+    color: red;
+}
+
+#reset-btn {
+    border: 1px solid gainsboro;
+}
+
+#reset-btn:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px 8px rgba(150, 158, 150, 0.582);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px;
+}
+
+.grid-item1 {
+    padding: 30px;
+    background-color: whitesmoke;
+}
+
+.grid-item1 h2 {
+    margin: 0px 0px 30px 0px;
+}
+
+.grid-item2 {
+    padding: 20px; 
+    background-color: beige;
+}
+
+.grid-item2 p {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.grid-item2 label {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: justify;
+}
+
+.grid-item2 a {
+    text-decoration: none;
+    color: white;
+}
+
+.grid-item2 button {
+    padding: 8px;
+    background-color: orange;
+    border: 0px;
+    border-radius: 12px;
+}
+
+.grid-item2 button:hover {
+    box-shadow: 2px 4px 4px rgba(255, 166, 0, 0.658);
+}
+
+.grid-item3 img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
