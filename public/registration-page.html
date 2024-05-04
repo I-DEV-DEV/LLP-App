@@ -15,6 +15,7 @@
 
                         <label for="username">Username</label><br/>
                         <input type="text" id="username" name="username" form="reg-form" placeholder="Username" required/>
+                        <span id="username-check"></span>
                         <br/><br/>
             
                         <label for="email">Email</label><br/>
@@ -33,12 +34,12 @@
 
                         <label for="password">Password</label><br/>
                         <input type="password" id="password" name="password" form="reg-form" placeholder="Password" onkeyup='check();' required/>
-                        <p id="validate-check"></p> 
+                        <span id="validate-check"></span> 
                         <br/><br/>
                 
                         <label for="confirm-password">Confirm Password</label><br/>
                         <input type="password" id="confirm-password" name="confirm-password" form="reg-form" placeholder="Re-enter Password" onkeyup='check();' required/>
-                        <p id="confirm-check"></p>
+                        <span id="confirm-check"></span>
                         <!--<label>&#x274C;</label><label>&#x2705;</label>-->
                         <br/><br/>
 
@@ -70,6 +71,7 @@
                 if(document.getElementById('password').value == document.getElementById('confirm-password').value)
                 {
                     document.getElementById('confirm-check').innerHTML = "&#x2705;";
+                    document.getElementById('validate-check').innerHTML = "";
                 }
                 else
                 {
@@ -94,6 +96,8 @@
                 document.getElementById('confirm-check').innerHTML = "";
                 document.getElementById('validate-check').innerHTML = "";
             }
+        </script>
+        <script src="/scripts/username-check.js"></script>
         </script>
     </body>
 </html>

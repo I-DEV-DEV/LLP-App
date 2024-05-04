@@ -18,6 +18,10 @@
   "author": "Devanand V S",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "axios": "^1.6.8",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.3"
   }
 }
