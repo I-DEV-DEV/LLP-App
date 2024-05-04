@@ -1,0 +1,129 @@
+.grid-container-1 {
+    display: grid;
+    grid-template-columns: 40% 15% 15% 15% 15%;
+    grid-template-rows: 100%;
+    background-color: rgb(132, 0, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    height: 10vh;
+    align-items: center;
+}
+
+.grid1-item {
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.grid1-item.nav-btn {
+    justify-content: center;
+}
+
+.grid1-item.nav-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+.grid1-item.llp-logo a {
+    text-decoration: none;
+    color: white;
+}
+
+.grid1-item.llp-logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.grid1-item.nav-btn:hover {
+    background-color: black;
+}
+
+.grid-container-2 {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1.5fr;
+    grid-template-rows: 1fr;
+    height: 80vh;
+}
+
+.grid-container-2 img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.grid2-item1{
+    background-color: white;
+    color: darkblue;
+    padding: 30px;
+    font-size: 1.5rem;
+}
+
+.grid2-item1 li {
+    padding: 7px 0px;
+}
+
+.grid2-item2 {
+    background-color: #5680E9;
+    color: white;
+    padding: 30px;
+    font-size: 1.5rem;
+}
+
+.grid2-item2 button {
+    padding: 10px;
+    border: 0px;
+    border-radius: 12px;
+}
+
+#sign-in-btn {
+    background-color: green;
+}
+
+#sign-up-btn {
+    background-color: orange;
+}
+
+.grid2-item2 a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+}
+
+footer {
+    background-color: #84CEEB;
+    height: 4vh;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+footer p {
+    margin: 0px;
+    padding: 0px 30px 0px 30px;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+}
+
+@media (max-width: 775px) {
+    .grid-container-1 {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 40% 20% 20% 20%;
+        height: 25vh;
+        align-items: center;
+    }
+    .grid1-item.llp-logo {
+        justify-content: center;
+    }
+
+    .grid-container-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}

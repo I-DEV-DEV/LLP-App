@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A language learning platform",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "node index.js"
   },
@@ -15,5 +16,8 @@
     "Assignment"
   ],
   "author": "Devanand V S",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
