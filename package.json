@@ -1,0 +1,19 @@
+{
+  "name": "llp-app",
+  "version": "1.0.0",
+  "description": "A language learning platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "FSAD",
+    "Assignment"
+  ],
+  "author": "Devanand V S",
+  "license": "ISC"
+}
