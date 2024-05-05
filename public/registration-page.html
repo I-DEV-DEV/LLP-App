@@ -14,7 +14,7 @@
                     <form id="reg-form" action="/register" method="POST" onsubmit="return validate()">
 
                         <label for="username">Username</label><br/>
-                        <input type="text" id="username" name="username" form="reg-form" placeholder="Username" required/>
+                        <input type="text" id="username" name="username" form="reg-form" placeholder="Username" onkeypress="return event.key != ' '" required/>
                         <span id="username-check"></span>
                         <br/><br/>
             
@@ -60,7 +60,9 @@
                     <input type="checkbox" id="tc" name="tc" form="reg-form" required/>
                     <label for="tc">I agree to the terms and conditions for using the platform and will adhere to it during my journey with the platform and with the connections I have made through the platform.</label>
                     <br /><br />
-                    <button><a href="/home.html">Back to Homepage</a></button>
+                    <form id="backHome" action="/" method="GET">
+                        <input type="submit" form="backHome" value="Back to Homepage" />
+                    </form>
                 </div>
                 <div class="grid-item3">
                     <img src="/resources/images/country-flags.jpg" alt="Country Flags"/>
@@ -95,9 +97,9 @@
             {
                 document.getElementById('confirm-check').innerHTML = "";
                 document.getElementById('validate-check').innerHTML = "";
+                document.getElementById('username-check').innerHTML = "";
             }
         </script>
-        <script src="/scripts/username-check.js"></script>
-        </script>
+        <script type="text/javascript" src="/scripts/usernameCheck.js"></script>
     </body>
 </html>

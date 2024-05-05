@@ -70,7 +70,7 @@
     font-size: 1.5rem;
 }
 
-.grid2-item2 button {
+.grid2-item2 input {
     padding: 10px;
     border: 0px;
     border-radius: 12px;
@@ -84,11 +84,21 @@
     background-color: orange;
 }
 
-.grid2-item2 a {
+.grid2-item2 input {
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
     color: white;
+}
+
+#sign-up-btn:hover {
+    cursor: pointer;
+    box-shadow: 2px 4px 4px rgba(255, 166, 0, 0.685);
+}
+
+#sign-in-btn:hover {
+    cursor: pointer;
+    box-shadow: 2px 4px 4px rgba(0, 128, 0, 0.555);
 }
 
 footer {

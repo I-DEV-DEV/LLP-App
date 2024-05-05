@@ -85,19 +85,16 @@ select {
     text-align: justify;
 }
 
-.grid-item2 a {
-    text-decoration: none;
+.grid-item2 input {
     color: white;
-}
-
-.grid-item2 button {
     padding: 8px;
     background-color: orange;
     border: 0px;
     border-radius: 12px;
 }
 
-.grid-item2 button:hover {
+.grid-item2 input:hover {
+    cursor: pointer;
     box-shadow: 2px 4px 4px rgba(255, 166, 0, 0.658);
 }
 
@@ -105,4 +102,8 @@ select {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+#username-check {
+    font-size: 1rem;
 }

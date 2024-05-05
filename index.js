@@ -15,9 +15,12 @@ APP.use(bodyParser.urlencoded({extended: true}));
 
 // Connect to MongoDB
 
-mongoose.connect('mongodb://localhost:27017/LLP_APP');
+const dbname = "LLP_APP";
+const collectionName = "UserAvailable";
 
-const testSchema = new mongoose.Schema(
+mongoose.connect('mongodb://localhost:27017/'+dbname);
+
+const collectionSchema = new mongoose.Schema(
                                         {
                                             username: String,
                                             email: String,
@@ -26,7 +29,7 @@ const testSchema = new mongoose.Schema(
                                         }
 );
 
-const testUser = mongoose.model('userTest',testSchema);
+const collectionInstance = mongoose.model(collectionName, collectionSchema);
 
 // ROUTES
 
@@ -38,35 +41,54 @@ APP.get("/",(req, res)=> {
                                 }
 );
 
+APP.get('/signup-page', (req, res) => {
+            res.sendFile(__dirname+"/public/registration-page.html")
+        }
+);
+
 // '/register' -> Registration endpoint
 
 APP.post("/register", async (req,res) => {
         const { username, email, plan, password } = req.body;
+
+        if( await collectionInstance.findOne( { username } ) )
+        {
+            res.send(`
+                    <h2>Registration failed.</h2>
+                    <h3>Username already taken.</h3>
+                `);
+            return;
+        }
+
+        if( await collectionInstance.findOne( {email} ) )
+        {
+            res.send("Registration failed. Email already being used.")
+            return;
+        }
+
         const hashedPassword = await bcrypt.hash(password, 12);
         try 
         {
-            const tuser = new testUser( {username, email, plan, password: hashedPassword});
-            await tuser.save();
+            const userInstance = new collectionInstance( {username, email, plan, password: hashedPassword});
+            await userInstance.save();
             res.send("Registration successful");
         }
         catch( error )
         {
             console.log(error);
-            res.status(500).send("registration failed");
+            res.status(500).send("Registration failed");
         }
     }
 );
 
-// '/check-username -> Checking username availability endpoint
+// '/check-username' -> Checking username availability endpoint
 
 APP.get('/check-username', async (req, res) =>
     {
         const { username } = req.query;
         try
         {
-            console.log("Here 1");
-            const userAny = await testUser.findOne({ username });
-            console.log("Here 2");
+            const userAny = await collectionInstance.findOne({ username });
             if(userAny)
             {
                 res.json( { available: false }); //Username already exists
