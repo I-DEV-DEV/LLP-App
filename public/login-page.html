@@ -4,9 +4,24 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="img/png" href="/resources/images/logo.png"/>
+        <link rel="stylesheet" href="/styles/style-login.css"/>
         <title>Login</title>
     </head>
     <body>
-        <h1>Login Page</h1>
+        <div class="container">
+            <h1>Login</h1>
+            <form id="log-form" action="/login" method="POST">
+                <label for="username">Username</label>
+                <br />
+                <input type="text" id="username" name="username" form="log-form" placeholder="Username" onkeypress="return event.key != ' '" required />
+                <br /><br />
+                <label for="password">Password</label>
+                <br />
+                <input type="password" id="password" name="password" form="log-form" placeholder="Password" onkeypress="return event.key != ' '" required />
+                <br /><br />
+                <input type="submit" id="login-btn" name="login-btn" form="log-form" value="Login" />
+                <input type="reset" id="reset-btn" name="reset-btn" form="log-form" value="Reset" />
+            </form>
+        </div>
     </body>
 </html>

@@ -27,7 +27,7 @@ usernameInput.addEventListener('input', async () =>
                 {
                     availability.style.color = 'red';
                     availability.innerHTML = "Username already taken";
-                    //regBtn.disabled = true;
+                    regBtn.disabled = true;
                 }
             }
             catch(error)

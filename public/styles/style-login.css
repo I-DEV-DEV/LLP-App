@@ -1,0 +1,56 @@
+body {
+    background-color: navy;
+    animation-name: bg-anim;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.container {
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    right: 15%;
+    left: 15%;
+    background-color: white;
+    border: 0px;
+    border-radius: 12px;
+    padding: 10px 40px;
+    font-size: 1.25rem;
+}
+
+input {
+    border-radius: 12px;
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+#login-btn {
+    background-color: green;
+    border: 0px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#reset-btn {
+    border: 0px;
+    font-size: 1rem;
+}
+
+#login-btn:hover {
+    cursor: pointer;
+    box-shadow: 2px 4px 4px rgb(6, 233, 6);
+}
+
+#reset-btn:hover {
+    cursor: pointer;
+    box-shadow: 2px 4px 4px rgb(226, 231, 226);
+}
+
+
+@keyframes bg-anim {
+    25% {background-color: navy;}
+    50% {background-color: aqua;}
+    100% {background-color: navy;}
+}
