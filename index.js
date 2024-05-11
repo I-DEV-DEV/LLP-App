@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import session from "express-session";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HOST="127.0.0.1";
@@ -12,6 +13,56 @@ const APP = express();
 
 APP.use(express.static("public"));
 APP.use(bodyParser.urlencoded({extended: true}));
+
+// Session Management
+APP.use(session(
+        {
+            secret: 'secret',
+            resave: false,
+            saveUninitialized: false,
+            cookie: 
+                    {
+                        maxAge: 1000 * 10,
+                        secure: false,
+                        httpOnly: true,
+                        sameSite: 'strict'
+                    }
+        }
+    )
+)
+
+// Authorization Middleware
+const authorize = (req, res, next) => {
+    //Check user is authenticated
+    if( !req.session.userId ) {
+        return res.status(401).send("Unauthorized");
+    }
+    //If user is authenticated, proceed to next middleware or route handler
+    next();
+}
+
+// Session Validity Check Middleware
+const checkSession = (req, res, next) =>
+    {
+        if(!req.session || !req.session.userId)
+        {
+            return res.redirect('/signin-page');
+        }
+        next();
+    }
+
+// Session reset Middleware
+
+APP.use((req, res, next) =>
+        {
+            if(req.session.userId)
+            {
+                req.session._garbage = Date();
+                req.session.touch();
+            }
+            next();
+        }
+)
 
 // Connect to MongoDB
 
@@ -101,7 +152,8 @@ APP.post('/login', async (req, res) => {
 
             if( user != null && await bcrypt.compare( password, user.password ) )
             {
-                res.render(__dirname+"/views/dashboard.ejs");
+                req.session.userId = user.username;
+                res.redirect('/dashboard');
                 return;
             }
             else
@@ -116,6 +168,28 @@ APP.post('/login', async (req, res) => {
         }        
     }
 );
+
+// Dashboard
+APP.get('/dashboard', checkSession, authorize, (req, res) =>
+    {
+        const username = req.session.userId;
+        res.render(__dirname+"/views/dashboard.ejs", { user: username });
+    }
+)
+
+// User logout
+APP.post('/logout', (req, res) =>
+    {
+        req.session.destroy( err => {
+                if(err)
+                {
+                    return res.status(500).send("Failed to Logout");
+                }
+                res.redirect('/signin-page');
+            }
+        )
+    }
+)
 
 // '/check-username' -> Checking username availability endpoint
 
@@ -147,3 +221,4 @@ APP.listen(PORT,HOST,()=> {
         console.log(`App listening on ${HOST}:${PORT}`);
     }
 );
+

@@ -28,5 +28,6 @@ input {
 }
 
 input:hover {
+    cursor: pointer;
     background-color: greenyellow;
 }

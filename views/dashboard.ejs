@@ -4,8 +4,58 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard</title>
+        <link rel="icon" type="img/png" href="/resources/images/logo.png"/>
+        <link rel="stylesheet" href="/styles/style-dashboard.css" />
     </head>
     <body>
-        <h1>Welcome User</h1>
+        <section class="header-section">
+            <header>
+                <div class="logo-title">Language Learning Dashboard</div>
+                <div class="user-welcome">Welcome <%= user %></div>
+                <div class="logout-section"><form action='/logout' method="POST"><input type="submit" value="Logout"/></form></div>
+            </header>
+        </section>
+        <section class="content-section">
+            <div class="content-container">
+                <div class="sidebars">
+                    <div class="sidebar" onclick="selectorChange(this);">
+                        Progress
+                    </div>
+                    <div class="sidebar" onclick="selectorChange(this);">
+                        Learning Path
+                    </div>
+                    <div class="sidebar" onclick="selectorChange(this);">
+                        Assessments
+                    </div>
+                    <div class="sidebar" onclick="selectorChange(this);">
+                        Feedbacks
+                    </div>
+                    <div class="sidebar" onclick="selectorChange(this);">
+                        Settings
+                    </div>
+
+                </div>
+                <div class="main-content" id="main-info">
+                    
+                </div>
+            </div>
+        </section>
+        <script>
+            function selectorChange(e)
+            {
+                const items = document.querySelectorAll('.sidebar');
+                items.forEach( (item, index) =>
+                            {
+                                item.style.backgroundColor = "#95F095";
+                                item.style.fontWeight="normal";
+                            }
+                ) 
+                e.style.fontWeight = "bold";
+                e.style.backgroundColor = "white";
+                var mainContent = document.getElementById('main-info');
+                mainContent.style.color = "black";
+                mainContent.style.backgroundColor = "white";
+            }
+        </script>
     </body>
 </html>
