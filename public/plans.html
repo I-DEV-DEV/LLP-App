@@ -22,7 +22,7 @@
                     <li>Fill in the Blanks Assessment</li>
                 </ul>
             </div>
-            <div class="premium-plan" onclick="planClicked()">
+            <div class="premium-plan" onclick="planClicked()">   
                 <h2>Premium Plan</h2>
                 <p>Features</p>
                 <ul>
@@ -34,12 +34,14 @@
                     <li>Fill in the Blanks Assessment</li>
                     <li class="additional-feature">Professional Assessment</li>
                     <li class="additional-feature">Interaction with Native Speakers</li>
-                </ul>
+                </ul>        
             </div>
         </div>
         <script>
-            function planClicked() {
-                window.location.href = "/registration-page.html";
+            async function planClicked() {
+                // = "/registration-page.html";
+                const response = await fetch('/signup-page');
+                window.location.href = response.url;
             }
         </script>
     </body>

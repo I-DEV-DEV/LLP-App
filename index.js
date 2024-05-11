@@ -99,7 +99,7 @@ APP.post('/login', async (req, res) => {
                 return;
             }
 
-            if( user && await bcrypt.compare( password, user.password ) )
+            if( user != null && await bcrypt.compare( password, user.password ) )
             {
                 res.render(__dirname+"/views/dashboard.ejs");
                 return;
