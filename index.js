@@ -242,15 +242,89 @@ APP.get('/progress', async (req, res) =>
     }
 )
 
-APP.get('/lp-english', (req, res) =>
+APP.get('/lp-english',checkSession, authorize, (req, res) =>
     {
-        res.send("English Learning Path");
+        const username = req.session.userId;
+        res.render("lp-english.ejs",{ "language": "English", "user": username });
     }
 )
 
-APP.get('/lp-malayalam', (req, res) =>
+APP.get('/lp-eng-alphabets',checkSession, authorize, (req, res) =>
     {
-        res.send("Malayalam Learning Path");
+        const username = req.session.userId;
+        res.render("lp-eng-alph.ejs",{ "language": "English", "user": username });
+    }
+)
+
+APP.get('/lp-malayalam', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>ഉടൻ വരുന്നു</h1>");
+    }
+)
+
+APP.get('/lp-tamil', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>விரைவில் வரும்</h1>");
+    }
+)
+
+APP.get('/lp-telugu', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>త్వరలో</h1>");
+    }
+)
+
+APP.get('/lp-kannada', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ</h1>");
+    }
+)
+
+APP.get('/lp-hindi', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>जल्द आ रहा है</h1>");
+    }
+)
+
+APP.get('/lp-sanskrit', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>शीघ्रेण आगच्छसि</h1>");
+    }
+)
+
+APP.get('/lp-german', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>Demnächst</h1>");
+    }
+)
+
+APP.get('/lp-french', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>À venir</h1>");
+    }
+)
+
+APP.get('/lp-japanese', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>近日公開</h1>");
+    }
+)
+
+APP.get('/lp-spanish', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>Muy pronto</h1>");
+    }
+)
+
+APP.get('/lp-korean', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>곧 출시 예정</h1>");
+    }
+)
+
+APP.get('/lp-greek', checkSession, authorize, (req, res) =>
+    {
+        res.send("<h1>Ερχομαι συντομα</h1>");
     }
 )
 

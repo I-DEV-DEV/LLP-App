@@ -126,10 +126,59 @@
                 btnMal.textContent = "Malayalam";
                 btnMal.form="mal-form";
 
+                const formTam = document.createElement("form");
+                formTam.action = "/lp-tamil";
+                formTam.id = "tam-form";
+                formTam.method="GET";
+                
+                const btnTam = document.createElement('button');
+                btnTam.classList.add("lp-btns");
+                btnTam.textContent = "Tamil";
+                btnTam.form="tam-form";
+
+                const formTel = document.createElement("form");
+                formTel.action = "/lp-telugu";
+                formTel.id = "tel-form";
+                formTel.method="GET";
+
+                const btnTel = document.createElement('button');
+                btnTel.classList.add("lp-btns");
+                btnTel.textContent = "Telugu";
+                btnTel.form="tel-form";
+
+                const formKan = document.createElement("form");
+                formKan.action = "/lp-kannada";
+                formKan.id = "kan-form";
+                formKan.method="GET";
+
+                const btnKan = document.createElement('button');
+                btnKan.classList.add("lp-btns");
+                btnKan.textContent = "Kannada";
+                btnKan.form="kan-form";
+
+                const formHin = document.createElement("form");
+                formHin.action = "/lp-hindi";
+                formHin.id = "hin-form";
+                formHin.method="GET";
+
+                const btnHin = document.createElement('button');
+                btnHin.classList.add("lp-btns");
+                btnHin.textContent = "Hindi";
+                btnHin.form="hin-form";
+
                 formEng.appendChild(btnEng);
                 formMal.appendChild(btnMal);
+                formTam.appendChild(btnTam);
+                formTel.appendChild(btnTel);
+                formKan.appendChild(btnKan);
+                formHin.appendChild(btnHin);
+
                 content.appendChild(formEng);
                 content.appendChild(formMal);
+                content.appendChild(formTam);
+                content.appendChild(formTel);
+                content.appendChild(formKan);
+                content.appendChild(formHin);
             }
             function clickedAssessment()
             {

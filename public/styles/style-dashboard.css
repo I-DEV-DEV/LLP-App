@@ -113,3 +113,14 @@ th, td {
     font-weight: bold;
     box-shadow: 4px 4px 4px 4px blue;
 }
+
+.logo-title a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+.logo-title a:hover {
+    background-color: white;
+    color: black;
+}

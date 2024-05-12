@@ -1,0 +1,28 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+}
+
+.grid-item {
+    font-size: 3rem;
+    background-color: navy;
+    color: white;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.grid-item:hover {
+    background-color: white;
+    color: navy; 
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+button {
+    width: 100%;
+    border: 0px;
+    background-color: white;
+}

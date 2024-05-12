@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learning Path - <%=language%></title>
+        <link rel="icon" type="img/png" href="/resources/images/logo.png"/>
+        <link rel="stylesheet" href="/styles/style-dashboard.css" />
+        <link rel="stylesheet" href="/styles/style-eng-alph.css" />
+    </head>
+    <body>
+        <section class="header-section">
+            <header>
+                <div class="logo-title"><a href="/lp-english">&#x21a9; Back to English</a></div>
+                <div class="user-welcome">Welcome <%= user %></div>
+                <div class="logout-section"><form action='/logout' method="POST"><input type="submit" value="Logout"/></form></div>
+            </header>
+        </section>
+        <h1>English Alphabets</h1>
+        <p>Click on the alphabets to hear their pronunciation.</p>
+        <div class="grid-container">
+            <div class="grid-item" onclick="playsound(this)">
+                Aa
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Bb
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Cc
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Dd
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Ee
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Ff
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Gg
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Hh
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Ii
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Jj
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Kk
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Ll
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Mm
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Nn
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Oo
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Pp
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Qq
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Rr
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Ss
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Tt
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Uu
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Vv
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Ww
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Xx
+            </div>
+            <div class="grid-item" onclick="playsound(this)">
+                Yy
+            </div>
+            <div></div>
+            <div></div>
+            <div class="grid-item" onclick="playsound(this)">
+                Zz
+            </div>
+        </div>
+        <script>
+            function playsound(e)
+            {        
+                e.classList.add('dis-bgi');
+                const audio = new Audio(`resources/sounds/english/${e.innerHTML.trim()}.ogg`);
+                audio.play();
+                audio.addEventListener('ended', () =>
+                    {
+                        e.classList.remove('dis-bgi');
+                    }
+                )
+            }
+                
+        </script>
+    </body>
+</html>

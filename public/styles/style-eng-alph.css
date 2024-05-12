@@ -1,0 +1,41 @@
+h1, p {
+    padding: 0px 20px;
+    color: green;
+}
+p {
+    padding: 0px 0px 10px 20px;
+    font-style: italic;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 20px;
+    margin: 10px;
+}
+.grid-item {
+    font-size: 3rem;
+    font-weight: bold;
+    background-color: indigo;
+    color: white;
+    height: 100px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid indigo;
+    background-image: none;
+}
+
+.dis-bgi {
+    background-image: url('/resources/images/sound-wave.gif');
+}
+
+.grid-item:hover {
+    background-color: white;
+    color: indigo;
+    cursor: pointer;
+    border: 1px solid red;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Learning Path - <%=language%></title>
+        <link rel="icon" type="img/png" href="/resources/images/logo.png"/>
+        <link rel="stylesheet" href="/styles/style-dashboard.css" />
+        <link rel="stylesheet" href="/styles/style-lp-lang.css" />
+    </head>
+    <body>
+        <section class="header-section">
+            <header>
+                <div class="logo-title"><a href="/dashboard">&#x21a9; Back to Dashboard</a></div>
+                <div class="user-welcome">Welcome <%= user %></div>
+                <div class="logout-section"><form action='/logout' method="POST"><input type="submit" value="Logout"/></form></div>
+            </header>
+        </section>
+        <div class="grid-container">
+            <form id="alphabets-form" action="/lp-eng-alphabets" method="GET">
+                <button form="alphabets-form">
+                    <div class="grid-item">
+                        Alphabets
+                    </div>
+                </button>
+            </form>
+            <form id="vow-cons-form" action="/lp-eng-vow-cons" method="GET">
+                <button form="vow-cons-form">
+                    <div class="grid-item">
+                        Vowels and Consonants
+                    </div>
+                </button>
+            </form>
+        </div>
+    </body>
+</html>
