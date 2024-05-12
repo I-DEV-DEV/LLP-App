@@ -18,25 +18,31 @@
         <section class="content-section">
             <div class="content-container">
                 <div class="sidebars">
-                    <div class="sidebar" onclick="selectorChange(this);">
+                    <div class="sidebar" onclick="selectorChange(this); clickedProgress();">
                         Progress
                     </div>
-                    <div class="sidebar" onclick="selectorChange(this);">
+                    <div class="sidebar" onclick="selectorChange(this); clickedLPath();">
                         Learning Path
                     </div>
-                    <div class="sidebar" onclick="selectorChange(this);">
+                    <div class="sidebar" onclick="selectorChange(this); clickedAssessment();">
                         Assessments
                     </div>
-                    <div class="sidebar" onclick="selectorChange(this);">
+                    <div class="sidebar" onclick="selectorChange(this); clickedFeedbacks();">
                         Feedbacks
                     </div>
-                    <div class="sidebar" onclick="selectorChange(this);">
+                    <div class="sidebar" onclick="selectorChange(this); clickedSettings();">
                         Settings
                     </div>
 
                 </div>
                 <div class="main-content" id="main-info">
-                    
+                    <h1>Welcome <%= user %></h1>
+                    <h2>Use the sidebars to navigate</h2>
+                    <h2>Progress - Check your learning progress</h2>
+                    <h2>Learning Path - To access your learning resources</h2>
+                    <h2>Assessments - To test your understanding</h2>
+                    <h2>Feedback - From native speakers and professionals</h2>
+                    <h2>Settings - Set your preferences</h2>
                 </div>
             </div>
         </section>
@@ -52,9 +58,90 @@
                 ) 
                 e.style.fontWeight = "bold";
                 e.style.backgroundColor = "white";
-                var mainContent = document.getElementById('main-info');
-                mainContent.style.color = "black";
-                mainContent.style.backgroundColor = "white";
+            }
+            //Sidebar functions
+            async function clickedProgress()
+            {
+                const tableContainer = document.getElementById('main-info')
+                tableContainer.innerHTML = "<h1>Progress</h1>";
+                
+                const response = await fetch('/progress');
+                const data = await response.json();
+                //console.log(data);
+
+                const table = document.createElement('table');
+                table.classList.add('progress-table');
+
+                const thead = table.createTHead();
+                const tbody = table.createTBody();
+
+                const headerRow = thead.insertRow();
+                ['User','Language','Course','Completed','Completion Date'].forEach( (headerText) =>
+                    {
+                        const headerCell = document.createElement('th');
+                        headerCell.textContent = headerText;
+                        headerRow.appendChild(headerCell);
+                    }
+                );
+                
+                data.forEach( (dataObject) =>
+                    {
+                        const row = tbody.insertRow();
+                        Object.values(dataObject).forEach( (value) =>
+                            {
+                                const cell = row.insertCell();
+                                cell.textContent = value;
+                            }
+                        )
+                    }
+                );
+                
+                console.log(data);
+                table.appendChild(tbody);
+                tableContainer.appendChild(table);
+
+            }
+            function clickedLPath()
+            {
+                const content = document.getElementById('main-info');
+                content.innerHTML = "<h1>Learning Path</h1>";
+
+                const formEng = document.createElement("form");
+                formEng.action = "/lp-english";
+                formEng.id = "eng-form";
+                formEng.method="GET";
+
+                const btnEng = document.createElement('button');
+                btnEng.classList.add("lp-btns");
+                btnEng.textContent = "English";
+                btnEng.form="eng-form";
+
+                const formMal = document.createElement("form");
+                formMal.action = "/lp-malayalam";
+                formMal.id = "mal-form";
+                formMal.method="GET";
+                
+                const btnMal = document.createElement('button');
+                btnMal.classList.add("lp-btns");
+                btnMal.textContent = "Malayalam";
+                btnMal.form="mal-form";
+
+                formEng.appendChild(btnEng);
+                formMal.appendChild(btnMal);
+                content.appendChild(formEng);
+                content.appendChild(formMal);
+            }
+            function clickedAssessment()
+            {
+                document.getElementById('main-info').innerHTML = "<h1>Assessments</h1>";
+            }
+            function clickedFeedbacks()
+            {
+                document.getElementById('main-info').innerHTML = "<h1>Feedbacks</h1>";
+            }
+            function clickedSettings()
+            {
+                document.getElementById('main-info').innerHTML = "<h1>Settings</h1>";
             }
         </script>
     </body>

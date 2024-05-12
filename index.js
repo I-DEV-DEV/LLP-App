@@ -14,6 +14,9 @@ const APP = express();
 APP.use(express.static("public"));
 APP.use(bodyParser.urlencoded({extended: true}));
 
+APP.set('view engine', 'ejs')
+APP.set('views', __dirname+"/views");
+
 // Session Management
 APP.use(session(
         {
@@ -22,7 +25,7 @@ APP.use(session(
             saveUninitialized: false,
             cookie: 
                     {
-                        maxAge: 1000 * 10,
+                        maxAge: 1000 * 60 * 120,
                         secure: false,
                         httpOnly: true,
                         sameSite: 'strict'
@@ -173,7 +176,7 @@ APP.post('/login', async (req, res) => {
 APP.get('/dashboard', checkSession, authorize, (req, res) =>
     {
         const username = req.session.userId;
-        res.render(__dirname+"/views/dashboard.ejs", { user: username });
+        res.render("dashboard.ejs", { user: username });
     }
 )
 
@@ -188,6 +191,66 @@ APP.post('/logout', (req, res) =>
                 res.redirect('/signin-page');
             }
         )
+    }
+)
+
+// Sidebars
+
+const progressSchema = new mongoose.Schema(
+    {
+        username: String,
+        language: String,
+        course: String,
+        courseCompleted: Boolean,
+        completionDate: Date
+    },
+    {
+        collection: 'uProgress'
+    }
+);
+const progressName = "uProgress";
+const progressInstance = mongoose.model(progressName, progressSchema);
+
+APP.get('/progress', async (req, res) =>
+    {
+        const username = req.session.userId;
+        const data = await progressInstance.find( { username: username }, {"_id": 0} );
+        //console.log(username, data);
+        if( data != null)
+        {
+            res.send(
+                data
+                /*
+                {
+                    "username": data.username,
+                    "language": data.language,
+                    "course": data.course,
+                    "courseCompleted": data.courseCompleted,
+                    "completionDate": data.completionDate
+                }
+                */
+            );
+        }
+        else
+        {
+            res.send(
+                {
+                }
+            );
+        }
+        
+    }
+)
+
+APP.get('/lp-english', (req, res) =>
+    {
+        res.send("English Learning Path");
+    }
+)
+
+APP.get('/lp-malayalam', (req, res) =>
+    {
+        res.send("Malayalam Learning Path");
     }
 )
 

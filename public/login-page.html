@@ -9,19 +9,30 @@
     </head>
     <body>
         <div class="container">
-            <h1>Login</h1>
-            <form id="log-form" action="/login" method="POST">
-                <label for="username">Username</label>
-                <br />
-                <input type="text" id="username" name="username" form="log-form" placeholder="Username" onkeypress="return event.key != ' '" required />
-                <br /><br />
-                <label for="password">Password</label>
-                <br />
-                <input type="password" id="password" name="password" form="log-form" placeholder="Password" onkeypress="return event.key != ' '" required />
-                <br /><br />
-                <input type="submit" id="login-btn" name="login-btn" form="log-form" value="Login" />
-                <input type="reset" id="reset-btn" name="reset-btn" form="log-form" value="Reset" />
-            </form>
+            <div class="grid-item1">
+                <h1>Login</h1>
+                <form id="log-form" action="/login" method="POST">
+                    <label for="username">Username</label>
+                    <br />
+                    <input type="text" id="username" name="username" form="log-form" placeholder="Username" onkeypress="return event.key != ' '" required />
+                    <br /><br />
+                    <label for="password">Password</label>
+                    <br />
+                    <input type="password" id="password" name="password" form="log-form" placeholder="Password" onkeypress="return event.key != ' '" required />
+                    <br /><br />
+                    <input type="submit" id="login-btn" name="login-btn" form="log-form" value="Login" />
+                    <input type="reset" id="reset-btn" name="reset-btn" form="log-form" value="Reset" />
+                </form>
+            </div>
+            <div class="grid-item2">
+                <a href="/">&#x21a9; Back to Homepage</a>
+                <br /><br /><br />
+                <q>
+                    Live as if you were to die tomorrow.<br />
+                    Learn as if you were to live forever.
+                </q><br />
+                <cite>~Mahatma Gandhi</cite>
+            </div>
         </div>
     </body>
 </html>

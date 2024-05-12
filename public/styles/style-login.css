@@ -17,6 +17,9 @@ body {
     border-radius: 12px;
     padding: 10px 40px;
     font-size: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
 }
 
 input {
@@ -48,6 +51,24 @@ input {
     box-shadow: 2px 4px 4px rgb(226, 231, 226);
 }
 
+.grid-item2 {
+    padding: 40px;
+}
+
+.grid-item2 a {
+    text-decoration: none;
+    background-color: antiquewhite;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+q {
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+cite {
+    float: right;
+}
 
 @keyframes bg-anim {
     25% {background-color: navy;}

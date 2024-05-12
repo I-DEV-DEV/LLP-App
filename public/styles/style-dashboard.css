@@ -49,11 +49,6 @@ header {
     height: 85vh;
 }
 
-.main-content {
-    color: red;
-    background-color: yellow;
-}
-
 .sidebars {
     display: grid;
     grid-template-columns: 1fr;
@@ -73,4 +68,48 @@ header {
 .sidebar:hover {
     cursor: pointer;
     background-color: rgba(149, 240, 149, 0.568);
+}
+
+.main-content {
+    color: grey;
+}
+
+.progress-table {
+    background-color: white; 
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    color: blue;
+}
+
+table, th, td {
+    
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+}
+
+.lp-btns {
+    font-size: 2rem;
+    padding: 20px;
+    margin: 10px 0px;
+    background-color: navy;
+    color: white;
+    border: 0px;
+    border-radius: 12px;
+    width:90%;
+}
+
+.lp-btns:hover {
+    cursor: pointer;
+    border: 1px solid navy;
+    background-color: white;
+    color: navy;
+    font-weight: bold;
+    box-shadow: 4px 4px 4px 4px blue;
 }
