@@ -18,8 +18,8 @@ APP.set('view engine', 'ejs')
 APP.set('views', __dirname+"/views");
 
 const dbname = "LLP_APP";
-const collectionName =  "testUsers"; // "UserAvailable"; // User details
-const progressName =  "testprogress"; // "uProgress"; // Progress Details
+const collectionName =  "UserDetails"; // "UserAvailable"; // User details
+const progressName =  "UserProgress"; // "uProgress"; // Progress Details
 
 // Session Management
 APP.use(session(
