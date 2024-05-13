@@ -72,6 +72,7 @@ header {
 
 .main-content {
     color: grey;
+    overflow: auto;
 }
 
 .progress-table {
@@ -123,4 +124,16 @@ th, td {
 .logo-title a:hover {
     background-color: white;
     color: black;
+}
+
+label {
+    font-size: 1.75rem;
+    color: black;
+}
+
+input {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 12px;
 }

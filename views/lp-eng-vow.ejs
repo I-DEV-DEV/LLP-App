@@ -6,31 +6,31 @@
         <title>Learning Path - <%=language%></title>
         <link rel="icon" type="img/png" href="/resources/images/logo.png"/>
         <link rel="stylesheet" href="/styles/style-dashboard.css" />
-        <link rel="stylesheet" href="/styles/style-lp-lang.css" />
+        <link rel="stylesheet" href="/styles/style-eng-vow.css" />
     </head>
     <body>
         <section class="header-section">
             <header>
-                <div class="logo-title"><a href="/dashboard">&#x21a9; Back to Dashboard</a></div>
+                <div class="logo-title"><a href="/lp-english">&#x21a9; Back to English</a></div>
                 <div class="user-welcome">Welcome <%= user %></div>
                 <div class="logout-section"><form action='/logout' method="POST"><input type="submit" value="Logout"/></form></div>
             </header>
         </section>
+        <h1>English Vowels</h1>
         <div class="grid-container">
-            <form id="alphabets-form" action="/lp-eng-alphabets" method="GET">
-                <button form="alphabets-form">
-                    <div class="grid-item">
-                        Alphabets
-                    </div>
-                </button>
-            </form>
-            <form id="vow-form" action="/lp-eng-vow" method="GET">
-                <button form="vow-form">
-                    <div class="grid-item">
-                        Vowels
-                    </div>
-                </button>
-            </form>
+            <div class="grid-item usual">
+                <h2>Vowels</h2>
+                <h3>Aa - An apple</h3>
+                <h3>Ee - An elephant</h3>
+                <h3>Ii - An image</h3>
+                <h3>Oo - An Owl</h3>
+                <h3>Uu - An umbrella</h3>
+            </div>
+            <div class="grid-item exception">
+                <h2>Exception !!!</h2>
+                <h3>Uu - A university</h3>
+                <h4>"a" for words starting with Uu when soundng like "you"</h4>
+            </div>
         </div>
     </body>
 </html>

@@ -76,7 +76,7 @@
                 const tbody = table.createTBody();
 
                 const headerRow = thead.insertRow();
-                ['User','Language','Course','Completed','Completion Date'].forEach( (headerText) =>
+                ['User','Language','Course','Status','Modified Date'].forEach( (headerText) =>
                     {
                         const headerCell = document.createElement('th');
                         headerCell.textContent = headerText;
@@ -166,12 +166,89 @@
                 btnHin.textContent = "Hindi";
                 btnHin.form="hin-form";
 
+                const formSan = document.createElement("form");
+                formSan.action = "/lp-sanskrit";
+                formSan.id = "san-form";
+                formSan.method="GET";
+
+                const btnSan = document.createElement('button');
+                btnSan.classList.add("lp-btns");
+                btnSan.textContent = "Sanskrit";
+                btnSan.form="san-form";
+
+                const formGer = document.createElement("form");
+                formGer.action = "/lp-german";
+                formGer.id = "ger-form";
+                formGer.method="GET";
+
+                const btnGer = document.createElement('button');
+                btnGer.classList.add("lp-btns");
+                btnGer.textContent = "German";
+                btnGer.form="ger-form";
+
+                const formFre = document.createElement("form");
+                formFre.action = "/lp-french";
+                formFre.id = "fre-form";
+                formFre.method="GET";
+
+                const btnFre = document.createElement('button');
+                btnFre.classList.add("lp-btns");
+                btnFre.textContent = "French";
+                btnFre.form="fre-form";
+
+                const formJap = document.createElement("form");
+                formJap.action = "/lp-japanese";
+                formJap.id = "jap-form";
+                formJap.method="GET";
+
+                const btnJap = document.createElement('button');
+                btnJap.classList.add("lp-btns");
+                btnJap.textContent = "Japanese";
+                btnJap.form="jap-form";
+
+                const formSpa = document.createElement("form");
+                formSpa.action = "/lp-spanish";
+                formSpa.id = "spa-form";
+                formSpa.method="GET";
+
+                const btnSpa = document.createElement('button');
+                btnSpa.classList.add("lp-btns");
+                btnSpa.textContent = "Spanish";
+                btnSpa.form="spa-form";
+
+                const formKor = document.createElement("form");
+                formKor.action = "/lp-korean";
+                formKor.id = "kor-form";
+                formKor.method="GET";
+
+                const btnKor = document.createElement('button');
+                btnKor.classList.add("lp-btns");
+                btnKor.textContent = "Korean";
+                btnKor.form="kor-form";
+
+                const formGre = document.createElement("form");
+                formGre.action = "/lp-greek";
+                formGre.id = "gre-form";
+                formGre.method="GET";
+
+                const btnGre = document.createElement('button');
+                btnGre.classList.add("lp-btns");
+                btnGre.textContent = "Greek";
+                btnGre.form="gre-form";
+
                 formEng.appendChild(btnEng);
                 formMal.appendChild(btnMal);
                 formTam.appendChild(btnTam);
                 formTel.appendChild(btnTel);
                 formKan.appendChild(btnKan);
                 formHin.appendChild(btnHin);
+                formSan.appendChild(btnSan);
+                formGer.appendChild(btnGer);
+                formFre.appendChild(btnFre);
+                formJap.appendChild(btnJap);
+                formSpa.appendChild(btnSpa);
+                formKor.appendChild(btnKor);
+                formGre.appendChild(btnGre);
 
                 content.appendChild(formEng);
                 content.appendChild(formMal);
@@ -179,10 +256,44 @@
                 content.appendChild(formTel);
                 content.appendChild(formKan);
                 content.appendChild(formHin);
+                content.appendChild(formSan);
+                content.appendChild(formGer);
+                content.appendChild(formFre);
+                content.appendChild(formJap);
+                content.appendChild(formSpa);
+                content.appendChild(formKor);
+                content.appendChild(formGre);
             }
             function clickedAssessment()
             {
-                document.getElementById('main-info').innerHTML = "<h1>Assessments</h1>";
+                const quiz = document.getElementById('main-info');
+                quiz.innerHTML = "<h1>Assessments</h1><h2>English Assessment - Alphabets 1</h2>";
+
+                const quizForm = document.createElement("form");
+                quizForm.action = "/eng-quiz";
+                quizForm.id = "engQuiz";
+                quizForm.method="POST";
+
+                const label1 = document.createElement("label");
+                label1.htmlFor="inputID";
+                label1.textContent="Q) Type the 15th alphabet in the English:  ";
+
+                const inp = document.createElement("input");
+                inp.id = "inputID";
+                inp.name="answer";
+                inp.form = "engQuiz";
+
+                const btn = document.createElement('button');
+                btn.classList.add("lp-btns");
+                btn.textContent = "Check Answer";
+                btn.form="engQuiz";
+
+                quizForm.appendChild(label1);
+                quizForm.appendChild(inp);
+                quizForm.appendChild(btn);
+
+                quiz.appendChild(quizForm);
+
             }
             function clickedFeedbacks()
             {

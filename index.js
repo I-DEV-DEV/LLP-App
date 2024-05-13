@@ -17,6 +17,10 @@ APP.use(bodyParser.urlencoded({extended: true}));
 APP.set('view engine', 'ejs')
 APP.set('views', __dirname+"/views");
 
+const dbname = "LLP_APP";
+const collectionName =  "testUsers"; // "UserAvailable"; // User details
+const progressName =  "testprogress"; // "uProgress"; // Progress Details
+
 // Session Management
 APP.use(session(
         {
@@ -68,9 +72,6 @@ APP.use((req, res, next) =>
 )
 
 // Connect to MongoDB
-
-const dbname = "LLP_APP";
-const collectionName = "UserAvailable";
 
 mongoose.connect('mongodb://localhost:27017/'+dbname)
     .then(() => { console.log("Connected to MongoDB.") } )
@@ -201,20 +202,20 @@ const progressSchema = new mongoose.Schema(
         username: String,
         language: String,
         course: String,
-        courseCompleted: Boolean,
-        completionDate: Date
+        status: String,
+        ModifiedDate: Date
     },
     {
-        collection: 'uProgress'
+        collection: progressName
     }
 );
-const progressName = "uProgress";
+
 const progressInstance = mongoose.model(progressName, progressSchema);
 
 APP.get('/progress', async (req, res) =>
     {
         const username = req.session.userId;
-        const data = await progressInstance.find( { username: username }, {"_id": 0} );
+        const data = await progressInstance.find( { username: username }, {"_id": 0, "__v": 0} );
         //console.log(username, data);
         if( data != null)
         {
@@ -249,10 +250,34 @@ APP.get('/lp-english',checkSession, authorize, (req, res) =>
     }
 )
 
-APP.get('/lp-eng-alphabets',checkSession, authorize, (req, res) =>
+APP.get('/lp-eng-alphabets',checkSession, authorize, async (req, res) =>
     {
         const username = req.session.userId;
+        const data = await progressInstance.findOne( { username: username, language: "English", course: "Alphabets" } );
+
+        if(! data)
+        {
+            const pgData = await new progressInstance({username: username, language: "English", course: "Alphabets", status:"In Progress", ModifiedDate: Date()});
+            await pgData.save();
+        }
+
         res.render("lp-eng-alph.ejs",{ "language": "English", "user": username });
+    }
+)
+
+APP.get('/lp-eng-vow',checkSession, authorize, async (req, res) =>
+    {
+        const username = req.session.userId;
+        
+        const data = await progressInstance.findOne( { username: username, language: "English", course: "Vowels" } );
+
+        if(! data)
+        {
+            const pgData = await new progressInstance({username: username, language: "English", course: "Vowels", status:"In Progress", ModifiedDate: Date()});
+            await pgData.save();
+        }
+
+        res.render("lp-eng-vow.ejs",{ "language": "English", "user": username });
     }
 )
 
@@ -306,7 +331,7 @@ APP.get('/lp-french', checkSession, authorize, (req, res) =>
 
 APP.get('/lp-japanese', checkSession, authorize, (req, res) =>
     {
-        res.send("<h1>近日公開</h1>");
+        res.send("<h1>カミング・スーン</h1>");
     }
 )
 
@@ -327,6 +352,34 @@ APP.get('/lp-greek', checkSession, authorize, (req, res) =>
         res.send("<h1>Ερχομαι συντομα</h1>");
     }
 )
+
+APP.post('/eng-quiz', checkSession, authorize, async (req,res) =>
+    {
+        const username = req.session.userId;
+        const data = await progressInstance.findOne( { username: username, language: "English", course: "Alphabets Assessment-1" } );
+        if(! data)
+        {
+            const pgData = await new progressInstance({username: username, language: "English", course: "Alphabets Assessment-1", status:"Started", ModifiedDate: Date()});
+            await pgData.save();
+        }
+
+        const value = req.body;
+        if( value.answer === 'O' || value.answer === 'o')
+        {
+            progressInstance.updateOne( { username: username, language: "English", course: "Alphabets Assessment-1" }, {status: "Passed", ModifiedDate: Date() } )
+            .then(result => console.log("Document updated successfully"))
+            .catch(error => console.log("Error: ",error));
+            res.send("<h1>Congratulations!!! You got the answer correct.</h1><h2>Click <a href='/dashboard'>here</a> to return to dashboard.");
+        }
+        else
+        {
+            progressInstance.updateOne( { username: username, language: "English", course: "Alphabets Assessment-1" }, {status: "Failed", ModifiedDate: Date() } )
+            .then(result => console.log("Document updated successfully"))
+            .catch(error => console.log("Error: ",error));
+            res.send("<h1>Better luck next time...</h1><h2>Click <a href='/dashboard'>here</a> to return to dashboard.");
+        }
+    }
+);
 
 // '/check-username' -> Checking username availability endpoint
 
